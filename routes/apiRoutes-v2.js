@@ -2,6 +2,7 @@ const noteData = require("../db/db.json");
 const fs = require("fs");
 const util = require("util");
 const { v4: uuid } = require("uuid");
+// const writeFileAsync = util.promisify(fs.writeFile);
 
 module.exports = (app) => {
 	app.get("/api/notes", (req, res) => res.json(noteData));
@@ -12,7 +13,10 @@ module.exports = (app) => {
 		// if I use UUID, need a second variable saying "let ID = UUID"
 		// note.id = id
 		noteData.push(note);
-		fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
-		res.json(noteData);
+		writeFileAsync("./db/db.json", JSON.stringify(noteData))
+			.then(() => {
+				res.json(note);
+			})
+			.catch((err) => console.log(err));
 	});
 };
