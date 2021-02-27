@@ -8,20 +8,27 @@ module.exports = (app) => {
 
 	app.post("/api/notes", (req, res) => {
 		let note = req.body;
-		console.log(note);
 		// figure out how to write an ID, add it to "note" then the push....
 		// if I use UUID, need a second variable saying "let ID = UUID"
 		// note.id = id
-		const createNote = ({ title, text }) => {
-			return {
-				id: uuid(),
-				title,
-				text,
-			};
-			console.log(createNote);
-		};
+		let id = uuid();
+		note.id = id;
+		console.log(note);
+
 		noteData.push(note);
 		fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
 		res.json(noteData);
+	});
+
+	app.delete("/api/notes/:id", (req, res) => {
+		let deleteNote = req.params.id;
+		fs.readFile("./db/db.json", (err, data) => {
+			if (err) throw err;
+			let notes = JSON.parse(data);
+			const filteredNotes = notes.filter(
+				(note) => note.id !== deleteNote
+			);
+			fs.writeFileSync("./db/db.json", JSON.stringify(filteredNotes));
+		});
 	});
 };
