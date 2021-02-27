@@ -1,6 +1,6 @@
 const noteData = require("../db/db.json");
 const fs = require("fs");
-const util = require("util");
+// const util = require("util");
 const { v4: uuid } = require("uuid");
 
 module.exports = (app) => {
@@ -8,9 +8,6 @@ module.exports = (app) => {
 
 	app.post("/api/notes", (req, res) => {
 		let note = req.body;
-		// figure out how to write an ID, add it to "note" then the push....
-		// if I use UUID, need a second variable saying "let ID = UUID"
-		// note.id = id
 		let id = uuid();
 		note.id = id;
 		console.log(note);
@@ -25,7 +22,7 @@ module.exports = (app) => {
 		const filteredNotes = noteData.filter((note) => note.id !== deleteNote);
 		console.log(noteData);
 		noteData.length = 0;
-		noteData.push(filteredNotes);
+		noteData.push(...filteredNotes);
 		fs.writeFileSync("./db/db.json", JSON.stringify(filteredNotes));
 		res.json(filteredNotes);
 	});
