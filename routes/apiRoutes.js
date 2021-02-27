@@ -22,15 +22,11 @@ module.exports = (app) => {
 
 	app.delete("/api/notes/:id", (req, res) => {
 		let deleteNote = req.params.id;
-		fs.readFile("./db/db.json", (err, data) => {
-			if (err) throw err;
-			let notes = JSON.parse(data);
-			const filteredNotes = notes.filter(
-				(note) => note.id !== deleteNote
-			);
-			noteData.push(filteredNotes);
-			fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
-			res.json(noteData);
-		});
+		const filteredNotes = noteData.filter((note) => note.id !== deleteNote);
+		console.log(noteData);
+		noteData.length = 0;
+		noteData.push(filteredNotes);
+		fs.writeFileSync("./db/db.json", JSON.stringify(filteredNotes));
+		res.json(filteredNotes);
 	});
 };
