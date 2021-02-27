@@ -28,8 +28,9 @@ module.exports = (app) => {
 			const filteredNotes = notes.filter(
 				(note) => note.id !== deleteNote
 			);
-			fs.writeFileSync("./db/db.json", JSON.stringify(filteredNotes));
-			res.json(filteredNotes);
+			noteData.push(filteredNotes);
+			fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
+			res.json(noteData);
 		});
 	});
 };
