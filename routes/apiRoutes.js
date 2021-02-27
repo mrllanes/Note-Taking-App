@@ -29,6 +29,7 @@ module.exports = (app) => {
 				(note) => note.id !== deleteNote
 			);
 			fs.writeFileSync("./db/db.json", JSON.stringify(filteredNotes));
+			res.json(filteredNotes);
 		});
 	});
 };
