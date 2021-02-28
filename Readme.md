@@ -4,7 +4,8 @@
 
 ## Deployed site
 
-edit this
+https://github.com/mrllanes/Note-Taking-App (GitHub Repo)
+https://mrllanes.github.io/Note-Taking-App/ (Deployed Site on GitHub)
 
 ## Table of Contents
 
@@ -14,6 +15,7 @@ edit this
 -   [Technology](#technology)
 -   [Contributions](#contributions)
 -   [Questions](#questions)
+-   [Screenshots](#screenshots)
 
 ## Description
 
