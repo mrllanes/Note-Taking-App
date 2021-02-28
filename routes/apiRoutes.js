@@ -1,8 +1,10 @@
+// List of dependencies
 const noteData = require("../db/db.json");
 const fs = require("fs");
-// const util = require("util");
 const { v4: uuid } = require("uuid");
 
+// API Routes to compliment the server.js file
+// Written directly into module.export
 module.exports = (app) => {
 	app.get("/api/notes", (req, res) => res.json(noteData));
 

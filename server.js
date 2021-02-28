@@ -1,6 +1,8 @@
+// List of Dependencies
 const express = require("express");
 const path = require("path");
 
+// Express configuration
 const app = express();
 const PORT = process.env.PORT || 3000;
 
