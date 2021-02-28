@@ -4,6 +4,7 @@
 
 ## Deployed site
 
+https://llanes-note-taking-app.herokuapp.com/ (Deployed on Heroku (Live))
 https://github.com/mrllanes/Note-Taking-App (GitHub Repo)
 https://mrllanes.github.io/Note-Taking-App/ (Deployed Site on GitHub)
 
